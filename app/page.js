@@ -40,11 +40,11 @@ const styles = {
     padding: "0 2rem",
     fontSize: "0.9rem",
     lineHeight: "1.5",
-    margin: "0.5rem auto 1rem",
+    margin: "0.5rem auto 2rem",
     maxWidth: "36rem",
   },
   signOutButton: {
-    position: "fixed", // Changed to fixed positioning
+    position: "fixed",
     top: "1.5rem",
     right: "1.5rem",
     display: "inline-flex",
@@ -60,33 +60,51 @@ const styles = {
     color: "var(--primary-foreground)",
     cursor: "pointer",
     border: "none",
-    zIndex: 1000, // Increased z-index
+    zIndex: 1000,
   },
   contentWrapper: {
     position: "relative",
     marginTop: "1rem",
+    minHeight: "400px",
   },
 };
 
 const mobileStyles = `@media (max-width: 640px) {
+  main {
+    justify-content: flex-start;
+    padding-top: 6rem;
+  }
+  .container {
+    padding-top: 2rem !important;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: calc(100vh - 8rem);
+  }
+  .header {
+    position: static !important;
+    order: 1;
+    margin-bottom: 1rem;
+  }
   .header-title {
     font-size: 1.5rem !important;
     padding: 0 1rem !important;
-    margin-top: 2.5rem !important;
+    margin-top: 0 !important;
   }
   .header-description {
     font-size: 0.8rem !important;
     padding: 0 1rem !important;
-    margin: 0.5rem 0 2rem !important;
+    margin: 1rem 0 2rem !important;
   }
-  .container {
-    padding-top: 5rem !important;
+  .content-wrapper {
+    order: 2;
+    min-height: 500px !important;
+    margin-top: 0 !important;
+    flex: 1;
   }
   .sign-out-btn {
     top: 1rem !important;
     right: 1rem !important;
-    height: 2.25rem !important;
-    padding: 0 0.75rem !important;
   }
 }`;
 
@@ -98,7 +116,7 @@ export default function Home() {
       <main style={styles.main}>
         <style>{mobileStyles}</style>
         <div style={styles.container}>
-          <div style={styles.header}>
+          <div style={styles.header} className="header">
             <button
               onClick={signOut}
               style={{ ...styles.signOutButton, className: "sign-out-btn" }}>
@@ -116,7 +134,8 @@ export default function Home() {
               knowledge
             </p>
           </div>
-          <div style={styles.contentWrapper}>
+          <div
+            style={{ ...styles.contentWrapper, className: "content-wrapper" }}>
             <PromptGenerator />
           </div>
         </div>
