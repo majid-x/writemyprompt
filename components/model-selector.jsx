@@ -78,9 +78,9 @@ export default function ModelSelector({ selectedModel, onModelChange }) {
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
-              <HelpCircle className="h-4 w-4 text-muted-foreground" />
+              <HelpCircle className="h-4 w-4 text-muted-foreground cursor-pointer" />
             </TooltipTrigger>
-            <TooltipContent className="max-w-80 bg-white dark:bg-gray-900 text-black dark:text-white p-2 shadow-md rounded-md">
+            <TooltipContent className="max-w-80 p-3 text-sm">
               <p>
                 Select the AI model you'll be using. The prompt will be
                 optimized specifically for this model's capabilities and
@@ -93,18 +93,18 @@ export default function ModelSelector({ selectedModel, onModelChange }) {
       <Select
         value={selectedModel}
         onValueChange={(value) => onModelChange(value)}>
-        <SelectTrigger className="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-black dark:text-white rounded-lg px-4 py-2 shadow-sm">
+        <SelectTrigger className="w-full h-auto min-h-[2.5rem] py-2 px-3">
           <SelectValue placeholder="Select a model" />
         </SelectTrigger>
-        <SelectContent className="bg-white dark:bg-gray-900 text-black dark:text-white shadow-lg rounded-lg">
+        <SelectContent className="max-h-[300px] overflow-y-auto">
           {models.map((model) => (
             <SelectItem
               key={model.id}
               value={model.id}
-              className="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition">
-              <div className="flex flex-col">
+              className="py-3 px-2 cursor-pointer">
+              <div className="flex flex-col gap-1">
                 <span className="font-medium">{model.name}</span>
-                <span className="text-xs text-gray-600 dark:text-gray-400">
+                <span className="text-xs text-muted-foreground whitespace-normal">
                   {model.description}
                 </span>
               </div>

@@ -1,8 +1,6 @@
 import "./globals.css";
-import { Inter } from "next/font/google";
-import { ThemeProvider } from "@/components/theme-provider";
-
-const inter = Inter({ subsets: ["latin"] });
+import { AuthProvider } from "../context/auth-context";
+import FirebaseTokenHandler from "../components/auth/firebase-token-handler";
 
 export const metadata = {
   title: "AI Prompt Engineer",
@@ -12,14 +10,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange>
+      <body>
+        <AuthProvider>
+          <FirebaseTokenHandler />
           {children}
-        </ThemeProvider>
+        </AuthProvider>
       </body>
     </html>
   );

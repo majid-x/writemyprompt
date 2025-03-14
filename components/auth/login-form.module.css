@@ -1,0 +1,45 @@
+.container {
+  width: 100%;
+}
+
+.formContainer {
+  padding-top: 1.5rem;
+}
+
+.formGroup {
+  margin-bottom: 1rem;
+}
+
+.divider {
+  margin: 1rem 0;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+}
+
+.googleButton {
+  display: flex;
+  align-items: center;
+  margin-top: 0.75rem;
+}
+
+.googleIcon {
+  margin-right: 0.5rem;
+  height: 1rem;
+  width: 1rem;
+}
+
+.signupLink {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.875rem;
+}
+
+.signupLink a {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.signupLink a:hover {
+  text-decoration: none;
+}

@@ -14,7 +14,7 @@ export async function POST(req) {
     }
 
     // Check if we have an API key
-    if (!process.env.NEXT_PUBLIC_OPENAI_API_KEY) {
+    if (!process.env.OPENAI_API_KEY) {
       return NextResponse.json(
         {
           generatedPrompt:
@@ -29,7 +29,7 @@ export async function POST(req) {
 
     const { text } = await generateText({
       model: openai({
-        apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY, // Explicitly pass the API key here
+        apiKey: process.env.OPENAI_API_KEY, // Explicitly pass the API key here
       }),
       system: `You are an expert prompt engineer who specializes in creating optimized prompts for AI models.
           Your task is to take a simple user request and transform it into a detailed, effective prompt 
